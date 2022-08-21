@@ -9,8 +9,8 @@ function getRand(min, max) {
 }
 
 function getRandCategory(list) {
-    let n = list.length;
-    let i = Math.floor(Math.random() * n);
+    var n = list.length;
+    var i = Math.floor(Math.random() * n);
     return list[i];
 }
 // > randFac: float between 0 and 1.
@@ -18,12 +18,12 @@ function getRandCategory(list) {
 function getRandLineData(start,end,interControlPosCount,randFac) {
 
     var cpc = interControlPosCount + 2;
-    let rng = { x: (end.x - start.x), y: (end.y - start.y) };
-    let len = Math.sqrt((rng.x * rng.x) + (rng.y * rng.y));
-    let randMin = (len / 2) * (-1);
-    let randMax = (len / 2);
-    let x = d3.scaleLinear().domain([0, (cpc-1)]).range([start.x, end.x]);
-    let y = d3.scaleLinear().domain([0, (cpc-1)]).range([start.y, end.y]);
+    var rng = { x: (end.x - start.x), y: (end.y - start.y) };
+    var len = Math.sqrt((rng.x * rng.x) + (rng.y * rng.y));
+    var randMin = (len / 2) * (-1);
+    var randMax = (len / 2);
+    var x = d3.scaleLinear().domain([0, (cpc-1)]).range([start.x, end.x]);
+    var y = d3.scaleLinear().domain([0, (cpc-1)]).range([start.y, end.y]);
     var line = d3.line()
         .x(function (d, i) { return x(i) + d.x; })
         .y(function (d, i) { return y(i) + d.y; })
@@ -361,19 +361,19 @@ function loopUpdateSvgNodes(base0, prevData, data, tier, options, onComplete) {
 
 }
 function onCompleteSvgReset(base0, prevData, options, onComplete) {
-    let seedCount = 1;
-    let svgViewBox = {
+    var seedCount = 1;
+    var svgViewBox = {
         width: options.boundingBox[1].x - options.boundingBox[0].x
         , height: options.boundingBox[1].y - options.boundingBox[0].y
     };
-    let seedData = createSeeds(seedCount, svgViewBox, options);
+    var seedData = createSeeds(seedCount, svgViewBox, options);
 
-    let center = {
+    var center = {
         x: ((options.boundingBox[0].x + options.boundingBox[1].x) / 2)
         , y: ((options.boundingBox[0].y + options.boundingBox[1].y) / 2)
     };
 
-    let strokeExit = getRandLineData(
+    var strokeExit = getRandLineData(
         { x: (center.x - (svgViewBox.width * 0.01)), y: (center.y - (svgViewBox.height * 0.01)) }
         , { x: (center.x + (svgViewBox.width * 0.01)), y: (center.y + (svgViewBox.height * 0.01)) }
         , options.branch.path.points, 5/*options.branch.path.variation*/);
@@ -395,8 +395,8 @@ function onCompleteSvgReset(base0, prevData, options, onComplete) {
         .then(() => { return growSeeds(base0, seedData, options, onComplete); });
 }
 function onCompleteSvgJiggleReset(base0, prevData, options, onComplete) {
-    let seedCount = 1;
-    let svgViewBox = {
+    var seedCount = 1;
+    var svgViewBox = {
         width: options.boundingBox[1].x - options.boundingBox[0].x
         , height: options.boundingBox[1].y - options.boundingBox[0].y
     };
